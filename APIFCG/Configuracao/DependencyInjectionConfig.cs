@@ -15,6 +15,7 @@ namespace APIFCG.Configuracao
 
             #region Services/Repository   
             services.AddScoped<IUsuarioService, UsuarioService>();
+            services.AddScoped<IJwtService, JwtService>();
             #endregion
 
             #region Buider
