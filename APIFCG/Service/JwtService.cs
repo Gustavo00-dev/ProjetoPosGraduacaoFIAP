@@ -29,7 +29,7 @@ namespace APIFCG.Service
             {
                 new Claim(JwtRegisteredClaimNames.Sub, username),
                 new Claim(JwtRegisteredClaimNames.Jti, Guid.NewGuid().ToString()),
-                new Claim(ClaimTypes.Role, role) // AQUI: adiciona a role ("Admin" ou "User")
+                new Claim(ClaimTypes.Role, role)
             };
 
             var token = new JwtSecurityToken(

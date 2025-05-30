@@ -1,8 +1,12 @@
 using APIFCG.Configuracao;
+using APIFCG.Infra.Entity;
 using APIFCG.Infra.Middleware;
 using APIFCG.Infra.Model;
+using APIFCG.Infra.Repository;
 using Microsoft.AspNetCore.Authentication.JwtBearer;
+using Microsoft.EntityFrameworkCore;
 using Microsoft.IdentityModel.Tokens;
+using System;
 using System.Text;
 
 namespace APIFCG
@@ -12,6 +16,10 @@ namespace APIFCG
         public static void Main(string[] args)
         {
             var builder = WebApplication.CreateBuilder(args);
+
+            var configurations = new ConfigurationBuilder()
+                .AddJsonFile("appsettings.json")
+                .Build();
 
             builder.Services.AddControllers();
             builder.Services.AddEndpointsApiExplorer();
@@ -49,8 +57,23 @@ namespace APIFCG
                 });
             });
 
+
+            #region Configurações do banco de dados
+            var connectionString = AzureMySqlConnectionHelper.BuildConnectionString(
+                server: configurations.GetConnectionString("Server"),
+                database: configurations.GetConnectionString("Database"),
+                user: configurations.GetConnectionString("User"),
+                password: configurations.GetConnectionString("Password")
+            );
+            builder.Services.AddDbContext<AppDbContext>(options =>
+            {
+                options.UseMySql(connectionString, ServerVersion.AutoDetect(connectionString));
+            }, ServiceLifetime.Scoped);
+            #endregion
+
             //Dependencies
             builder.Services.ResolveDependencies();
+
 
             #region Configura JWT
             var jwtSettings = builder.Configuration.GetSection("JwtSettings");
