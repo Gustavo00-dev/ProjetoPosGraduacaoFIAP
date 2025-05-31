@@ -29,6 +29,11 @@ namespace APIFCG
                 // Configura Swagger UI
                 c.SwaggerDoc("v1", new() { Title = "APIFCG", Version = "v1" });
 
+                //Documentação XML para os controllers e modelos
+                var xmlFile = $"{System.Reflection.Assembly.GetExecutingAssembly().GetName().Name}.xml";
+                var xmlPath = Path.Combine(AppContext.BaseDirectory, xmlFile);
+                c.IncludeXmlComments(xmlPath);
+
                 // Define esquema de segurança JWT
                 c.AddSecurityDefinition("Bearer", new Microsoft.OpenApi.Models.OpenApiSecurityScheme
                 {

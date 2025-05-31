@@ -1,16 +1,14 @@
-﻿using System.ComponentModel.DataAnnotations;
-
-namespace APIFCG.Infra.Entity
+﻿namespace APIFCG.Infra.Model
 {
-    public class Jogo
+    /// <summary>
+    /// Data Transfer Object (DTO) para representar o cadastro de um jogo.
+    /// </summary>
+    public class JogoDTO
     {
-        [Key]
-        public int idJogo { get; set; }
         public string Nome { get; set; }
         public string NomeAbreviado { get; set; }
         public DateTime DataLancamento { get; set; }
         public decimal ValorVenda { get; set; }
         public string UsuarioResponsavelCadastro { get; set; }
-        public DateTime DataCadastro { get; set; }
     }
 }

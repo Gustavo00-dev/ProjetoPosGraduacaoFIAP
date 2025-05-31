@@ -10,7 +10,7 @@ namespace APIFCG.Infra.Repository.Configurations
         {
             builder.ToTable("Jogo");
             builder.HasKey(j => j.idJogo);
-            builder.Property(j => j.idJogo).HasColumnType("INT").ValueGeneratedNever();
+            builder.Property(j => j.idJogo).HasColumnType("INT").ValueGeneratedOnAdd();
             builder.Property(j => j.Nome).HasColumnName("Nome").IsRequired().HasMaxLength(100);
             builder.Property(j => j.NomeAbreviado).HasColumnName("NomeAbreviado").IsRequired().HasMaxLength(100);
             builder.Property(j => j.DataLancamento).HasColumnName("DataLancamento").IsRequired().HasColumnType("DATETIME");

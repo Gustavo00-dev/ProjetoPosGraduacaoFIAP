@@ -28,6 +28,7 @@ namespace APIFCG.Infra.Repository
         public void Deletar(int id)
         {
             _dbSet.Remove(_dbSet.Find(id));
+            _context.SaveChanges();
         }
 
         public T ObterPorId(int id)
@@ -37,7 +38,7 @@ namespace APIFCG.Infra.Repository
 
         public IList<T> ObterTodos()
         {
-            return _context.Set<T>().ToList();
+            return _context.Set<T>().AsNoTracking().ToList();
         }
     }
 }

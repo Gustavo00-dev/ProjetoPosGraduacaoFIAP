@@ -9,8 +9,8 @@ namespace APIFCG.Infra.Repository.Configurations
         public void Configure(EntityTypeBuilder<Usuario> builder)
         {
             builder.ToTable("Usuario");
-            builder.HasKey(u => u.IdCliente);
-            builder.Property(u => u.IdCliente).HasColumnType("INT").ValueGeneratedNever();
+            builder.HasKey(u => u.IdUsuario);
+            builder.Property(u => u.IdUsuario).HasColumnType("INT").ValueGeneratedOnAdd();
             builder.Property(u => u.Nome).HasColumnName("Nome").IsRequired().HasMaxLength(100);
             builder.Property(u => u.Email).HasColumnName("Email").IsRequired().HasMaxLength(100);
             builder.Property(u => u.Senha).HasColumnName("Senha").IsRequired().HasMaxLength(100);

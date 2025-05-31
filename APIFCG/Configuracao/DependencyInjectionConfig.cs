@@ -19,6 +19,8 @@ namespace APIFCG.Configuracao
             services.AddScoped<IJwtService, JwtService>();
             services.AddScoped<IUsuarioRepository, UsuarioRepository>();
             services.AddScoped<IJogoRepository, JogoRepository>();
+            services.AddScoped<IBibliotecaJogosClienteRepository, BibliotecaJogosClienteRepository>();
+            services.AddScoped<IPromocaoJogoRepository, PromocaoJogoRepository>();
             #endregion
 
             #region Builder
