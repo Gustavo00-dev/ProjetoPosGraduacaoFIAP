@@ -1,17 +1,15 @@
 using APIFCG.Configuracao;
-using APIFCG.Infra.Entity;
 using APIFCG.Infra.Middleware;
 using APIFCG.Infra.Model;
 using APIFCG.Infra.Repository;
 using Microsoft.AspNetCore.Authentication.JwtBearer;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.IdentityModel.Tokens;
-using System;
 using System.Text;
 
 namespace APIFCG
 {
-    public static class Program
+    public class Program
     {
         public static void Main(string[] args)
         {
