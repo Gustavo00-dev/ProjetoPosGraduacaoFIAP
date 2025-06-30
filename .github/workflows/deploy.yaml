@@ -23,7 +23,7 @@ jobs:
         uses: docker/build-push-action@v6.18.0
         with:
           context: .
-          tags: latest
+          tags: 'euturial/apifcg:latest'
           push: true
 
 
