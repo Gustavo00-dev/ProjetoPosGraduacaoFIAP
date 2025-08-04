@@ -27,12 +27,12 @@ namespace APIFCG
                 // Configura Swagger UI
                 c.SwaggerDoc("v1", new() { Title = "APIFCG", Version = "v1" });
 
-                //Documentação XML para os controllers e modelos
+                //Documentaï¿½ï¿½o XML para os controllers e modelos
                 var xmlFile = $"{System.Reflection.Assembly.GetExecutingAssembly().GetName().Name}.xml";
                 var xmlPath = Path.Combine(AppContext.BaseDirectory, xmlFile);
                 c.IncludeXmlComments(xmlPath);
 
-                // Define esquema de segurança JWT
+                // Define esquema de seguranï¿½a JWT
                 c.AddSecurityDefinition("Bearer", new Microsoft.OpenApi.Models.OpenApiSecurityScheme
                 {
                     Name = "Authorization",
@@ -61,13 +61,8 @@ namespace APIFCG
             });
 
 
-            #region Configurações do banco de dados
-            var connectionString = AzureMySqlConnectionHelper.BuildConnectionString(
-                server: configurations.GetConnectionString("Server"),
-                database: configurations.GetConnectionString("Database"),
-                user: configurations.GetConnectionString("User"),
-                password: configurations.GetConnectionString("Password")
-            );
+            #region Configuracaes do banco de dados
+            var connectionString = configurations.GetConnectionString("DefaultConnection");
             builder.Services.AddDbContext<AppDbContext>(options =>
             {
                 options.UseMySql(connectionString, ServerVersion.AutoDetect(connectionString));
@@ -106,12 +101,10 @@ namespace APIFCG
 
             var app = builder.Build();
 
-            // Configure the HTTP request pipeline.
-            if (app.Environment.IsDevelopment())
-            {
-                app.UseSwagger();
-                app.UseSwaggerUI();
-            }
+
+            app.UseSwagger();
+            app.UseSwaggerUI();
+
 
             app.UseHttpsRedirection();
 
