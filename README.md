@@ -61,6 +61,8 @@ Essa base servirá para futuras funcionalidades como matchmaking e gerenciamento
 - **JWT** (autenticação)
 - **xUnit / NUnit** (testes unitários)
 - **FluentValidation** (validações)
+- **New Relic** (monitoração de aplicação)
+- **Microsoft Azure** (hospedagem e infraestrutura)
 
 ---
 
@@ -86,3 +88,11 @@ Essa base servirá para futuras funcionalidades como matchmaking e gerenciamento
 ```bash
 git clone https://github.com/seu-usuario/APIFCG.git
 cd APIFCG
+```
+
+---
+
+## ☁️ Implantação e Monitoração
+
+- O projeto está hospedado na **Microsoft Azure**, garantindo alta disponibilidade e escalabilidade.
+- A monitoração da aplicação é realizada via **New Relic**, permitindo acompanhamento em tempo real de métricas, logs e performance.
