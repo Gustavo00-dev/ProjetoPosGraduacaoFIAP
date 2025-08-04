@@ -59,5 +59,15 @@ namespace APIFCG.Controllers
                 return Unauthorized();
             }
         }
+
+        /// <summary>
+        /// Endpoint apenas para testes
+        /// </summary>
+        /// <returns>Mensagem de sucesso</returns>
+        [HttpGet("test")]
+        public IActionResult Test()
+        {
+            return Ok("Autenticação funcionando corretamente.");
+        }
     }
 }
